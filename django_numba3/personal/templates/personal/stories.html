@@ -1,0 +1,53 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 140%;
+    margin-left: 5%;
+}
+
+td, th {
+    
+    text-align: center;
+    font-size: 25px;
+    padding: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<div class="jumbotron"  style="margin-right: 10%; background:rgba(153, 202, 255,0.5);">
+    <div class="row">
+        <div class="col-lg-8 col-md-4 col-sm-4 col-xs-12 pad-50">
+
+        	<div>
+	        	<table>
+	        		<tr>
+	        			<th>Date</th>
+	        			<th>Title</th>
+	        			<th>Actions</th>
+	        		</tr>
+	        		{% for stories in object_list %}
+					<tr>
+						<td>{{stories.date|date:"m-d-Y "}}</td>
+						<td><a href="/stories/{{stories.id}}">{{stories.title}}</a></td>
+						<td>
+							<a href="/delete/{{stories.id}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> <span class="glyphicon-class"></span>
+							</a> 
+
+							<a href="/update/{{stories.id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <span class="glyphicon-class"></span></a> 
+						</td>
+					</tr>
+					{% endfor %}
+	        	</table>
+        	</div>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
